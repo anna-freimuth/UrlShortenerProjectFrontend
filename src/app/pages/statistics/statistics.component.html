@@ -1,6 +1,7 @@
-<div class="container mt-4">
+<div class="container mt-4" *ngIf="top">
+  <h3>Statistics</h3>
   <div>
-    <a class="btn btn-outline-dark mb-2" href="#" role="button">Home</a>
+    <button class="btn btn-outline-dark mb-2" type="button" routerLink="/home">Home</button>
   </div>
   <table class="table table-dark table-hover">
     <thead>
@@ -11,10 +12,10 @@
     </tr>
     </thead>
     <tbody>
-    <tr >
-      <td>www.google.com</td>
-      <td>http://localhost:8080/gr</td>
-      <td>5</td>
+    <tr *ngFor="let elt of top">
+      <td>{{elt.longUrl}}</td>
+      <td>{{elt.shortUrl}}</td>
+      <td>{{elt.amount}}</td>
     </tr>
     </tbody>
   </table>

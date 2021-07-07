@@ -1,0 +1,22 @@
+<div class="container mt-4 col-sm-6">
+  <form>
+    <div class="form-group">
+      <div class="mb-3">
+        <label for="long-link" class="form-label">Long link</label>
+        <input type="text" class="form-control" id="long-link" aria-describedby="longLinkHelp">
+        <div id="longLinkHelp" class="form-text">Please write here a long link.</div>
+      </div>
+      <div class="mb-3">
+        <label for="expiration-date" class="form-label">Expiration date</label>
+        <input type="date" class="form-control" id="expiration-date" aria-describedby="expirationDateHelp">
+        <div id="expirationDateHelp" class="form-text">By default expiration date for a link is 3 days. You can leave
+          this form empty, if you want to use default option.
+        </div>
+      </div>
+
+      <button type="submit" class="col offset-sm-11 btn btn-primary" id="submit" *ngIf="true">Submit</button>
+    </div>
+  </form>
+  <div>
+  </div>
+</div>
