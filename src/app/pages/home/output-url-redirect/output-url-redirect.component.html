@@ -1,9 +1,12 @@
-<div class="container mt-4 col-sm-6">
+<div class="container mt-4 col-sm-6" *ngIf="false" >
   <div class="buttons-home">
-    <div class="d-grid gap-2">
-      <button class="btn btn-success mt-4" type="button" *ngIf="false">Short link:</button>
-      <button class="btn btn-primary mt-4" type="button" *ngIf="false">Check statistics</button>
-
+    <div class="card offset-3" style="width: 18rem;">
+      <div class="card-body">
+        <h5 class="card-title">Your short link is:</h5>
+        <p class="card-text">short url</p>
+        <button type="button" class="btn btn-secondary" >redirect</button>
+        <button type="button" class="btn btn-secondary offset-4">statistics</button>
+      </div>
     </div>
   </div>
 </div>
