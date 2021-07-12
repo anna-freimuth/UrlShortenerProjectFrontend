@@ -8,6 +8,7 @@ import {RouterModule} from "@angular/router";
 import {AppRoutingModule} from "./app-routing.module";
 import {InputUrlFormComponent} from './pages/home/input-url-form/input-url-form.component';
 import {OutputUrlRedirectComponent} from './pages/home/output-url-redirect/output-url-redirect.component';
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -16,11 +17,14 @@ import {OutputUrlRedirectComponent} from './pages/home/output-url-redirect/outpu
     StatisticsComponent,
     InputUrlFormComponent,
     OutputUrlRedirectComponent
+
   ],
   imports: [
     BrowserModule,
     RouterModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
