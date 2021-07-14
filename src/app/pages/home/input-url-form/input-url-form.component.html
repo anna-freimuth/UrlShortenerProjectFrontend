@@ -3,23 +3,31 @@
     <div class="form-group">
       <div class="mb-3">
         <label for="long-link" class="form-label">Long link</label>
-        <input type="text" class="form-control" id="long-link" placeholder="https://..." aria-describedby="longLinkHelp" formControlName="longLink">
+        <input type="text" class="form-control" id="long-link" placeholder="https://..." aria-describedby="longLinkHelp"
+               formControlName="longLink"
+        [ngClass]="!form.controls.longLink.errors && form.controls.longLink.value  ?'is-valid':'is-invalid'">
         <div id="longLinkHelp" class="form-text">Please write here a long link.</div>
-
+      </div>
+      <div class="mt-2 mb-2" *ngIf="form.controls.longLink.errors&&(form.dirty || form.touched)">
+        <p *ngIf="form.controls.longLink.hasError('pattern')" class=" alert alert-warning"> Link is not valid</p>
+        <p *ngIf="form.controls.longLink.hasError('required')" class=" alert alert-warning">Link is required</p>
       </div>
       <div class="mb-3">
-        <label for="expiration-date" class="form-label" >Expiration date</label>
-        <input type="date" class="form-control" id="expiration-date" aria-describedby="expirationDateHelp" formControlName="date">
+        <label for="expiration-date" class="form-label">Expiration date</label>
+        <input type="date" class="form-control" id="expiration-date" aria-describedby="expirationDateHelp"
+               formControlName="date">
         <div id="expirationDateHelp" class="form-text">By default expiration date for a link is 3 days.
         </div>
       </div>
-<div class="mt-2 mb-2" *ngIf="form.controls.longLink.errors&&form.dirty">
-  <p *ngIf="form.controls.longLink.hasError('pattern')"> Link is not valid</p>
-  <p *ngIf="form.controls.longLink.hasError('required')">Link is required</p>
-</div>
-      <button type="submit" class="btn btn-primary" id="submit" [disabled]="form.invalid" (click)="onSubmit()" >Submit</button>
+
+      <div class="mt-2 mb-2" *ngIf="form.controls.date.errors && (form.dirty || form.touched)">
+        <p *ngIf="form.controls.date.hasError('isBeforeToday')" class=" alert alert-warning">Date cannot be in the past</p>
+      </div>
+      <button type="submit" class="btn btn-primary" id="submit" [disabled]="form.invalid" (click)="onSubmit()">Submit
+      </button>
     </div>
   </form>
   <div>
   </div>
 </div>
+

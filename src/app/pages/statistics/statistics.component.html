@@ -12,11 +12,9 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let elt of top">
-      <td>{{elt.longUrl}}</td>
-      <td>{{elt.shortUrl}}</td>
-      <td>{{elt.amount}}</td>
-    </tr>
+    <ng-container *ngFor="let elt of top">
+      <tr app-statistic-item [elt]="elt"></tr>
+    </ng-container>
     </tbody>
   </table>
 </div>
