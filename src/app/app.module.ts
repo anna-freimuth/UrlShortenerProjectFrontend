@@ -9,6 +9,7 @@ import {AppRoutingModule} from "./app-routing.module";
 import {InputUrlFormComponent} from './pages/home/input-url-form/input-url-form.component';
 import {OutputUrlRedirectComponent} from './pages/home/output-url-redirect/output-url-redirect.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import { StatisticItemComponent } from './pages/statistics/statistic-item/statistic-item.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import {FormsModule, ReactiveFormsModule} from "@angular/forms";
     HomeComponent,
     StatisticsComponent,
     InputUrlFormComponent,
-    OutputUrlRedirectComponent
+    OutputUrlRedirectComponent,
+    StatisticItemComponent
 
   ],
   imports: [

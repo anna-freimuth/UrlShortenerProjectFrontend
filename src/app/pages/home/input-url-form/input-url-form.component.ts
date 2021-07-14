@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DatePipe} from "@angular/common";
+import {dateValidator} from "./dateValidator";
+import {Model} from "../../../model/model";
 
 @Component({
   selector: 'app-input-url-form',
@@ -19,22 +21,25 @@ export class InputUrlFormComponent implements OnInit {
 
   ngOnInit(): void {
     this.formInit();
+
   }
 
 
   private formInit(): void {
-    this.form = this.fb.group({
-        longLink: [null, [Validators.required, Validators.pattern(this.pattern)]],
-        date: []
-      }
-    );
     const date = new Date();
     date.setDate(date.getDate() + 3);
+
+
+    this.form = this.fb.group({
+        longLink: [null, [Validators.required, Validators.pattern(this.pattern)]],
+        date: [null, dateValidator]
+      }
+    );
     this.form.controls.date.setValue(this.datePipe.transform(date, 'yyyy-MM-dd'));
   }
 
-  onSubmit(){
-    console.log(this.form)
-    console.log(this.form?.value)
+  onSubmit() {
+    const model: Model = this.form?.value;
+    console.log(model)
   }
 }
