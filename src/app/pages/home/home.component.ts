@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {LongUrl} from "../../model/long-url";
+import {ShortUrl} from "../../model/short-url";
 
 @Component({
   selector: 'app-home',
@@ -8,14 +8,14 @@ import {LongUrl} from "../../model/long-url";
 })
 export class HomeComponent implements OnInit {
 
-  longUrl: LongUrl | undefined;
+  longUrl: ShortUrl | undefined;
 
   constructor() { }
 
   ngOnInit(): void {
   }
 
-  setLongUrl(longUrl: LongUrl) {
+  setLongUrl(longUrl: ShortUrl) {
 
     this.longUrl = longUrl;
   }

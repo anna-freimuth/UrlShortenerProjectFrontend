@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {LongUrl} from "../../../model/long-url";
+import {ShortUrl} from "../../../model/short-url";
 
 @Component({
   selector: 'app-output-url-redirect',
@@ -9,7 +9,7 @@ import {LongUrl} from "../../../model/long-url";
 export class OutputUrlRedirectComponent implements OnInit {
 
   @Input()
-  longUrl: LongUrl | undefined;
+  longUrl: ShortUrl | undefined;
 
   constructor() { }
 

@@ -4,7 +4,7 @@ import {DatePipe} from "@angular/common";
 import {dateValidator} from "./dateValidator";
 import {Model} from "../../../model/model";
 import {UrlService} from "../../../service/url.service";
-import {LongUrl} from "../../../model/long-url";
+import {ShortUrl} from "../../../model/short-url";
 import {HttpErrorResponse} from "@angular/common/http";
 import {valueReferenceToExpression} from "@angular/compiler-cli/src/ngtsc/annotations/src/util";
 import {OutputUrlRedirectComponent} from "../output-url-redirect/output-url-redirect.component";
@@ -18,9 +18,9 @@ import {OutputUrlRedirectComponent} from "../output-url-redirect/output-url-redi
 export class InputUrlFormComponent implements OnInit {
 
   form: FormGroup | undefined;
-  longUrl: LongUrl| undefined;
+  longUrl: ShortUrl| undefined;
   @Output()
-  longUrlEvent = new EventEmitter<LongUrl>()
+  longUrlEvent = new EventEmitter<ShortUrl>()
 
   pattern = 'https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)'
 
@@ -56,7 +56,7 @@ export class InputUrlFormComponent implements OnInit {
     console.log(error)
   }
 
-  private callBackOk(value: LongUrl) {
+  private callBackOk(value: ShortUrl) {
     this.longUrl= value;
     this.longUrlEvent.emit(value);
     console.log(value);
