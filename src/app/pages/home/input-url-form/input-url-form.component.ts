@@ -1,8 +1,13 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DatePipe} from "@angular/common";
 import {dateValidator} from "./dateValidator";
 import {Model} from "../../../model/model";
+import {UrlService} from "../../../service/url.service";
+import {LongUrl} from "../../../model/long-url";
+import {HttpErrorResponse} from "@angular/common/http";
+import {valueReferenceToExpression} from "@angular/compiler-cli/src/ngtsc/annotations/src/util";
+import {OutputUrlRedirectComponent} from "../output-url-redirect/output-url-redirect.component";
 
 @Component({
   selector: 'app-input-url-form',
@@ -13,10 +18,13 @@ import {Model} from "../../../model/model";
 export class InputUrlFormComponent implements OnInit {
 
   form: FormGroup | undefined;
+  longUrl: LongUrl| undefined;
+  @Output()
+  longUrlEvent = new EventEmitter<LongUrl>()
 
   pattern = 'https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)'
 
-  constructor(private fb: FormBuilder, private datePipe: DatePipe) {
+  constructor(private fb: FormBuilder, private datePipe: DatePipe, private urlService:UrlService) {
   }
 
   ngOnInit(): void {
@@ -31,7 +39,7 @@ export class InputUrlFormComponent implements OnInit {
 
 
     this.form = this.fb.group({
-        longLink: [null, [Validators.required, Validators.pattern(this.pattern)]],
+        longUrl: [null, [Validators.required, Validators.pattern(this.pattern)]],
         date: [null, dateValidator]
       }
     );
@@ -40,6 +48,17 @@ export class InputUrlFormComponent implements OnInit {
 
   onSubmit() {
     const model: Model = this.form?.value;
-    console.log(model)
+    this.urlService.addUrl(model)
+      .subscribe(value=>this.callBackOk(value),error=>this.callBackError(error));
+  }
+
+  private callBackError(error: HttpErrorResponse) {
+    console.log(error)
+  }
+
+  private callBackOk(value: LongUrl) {
+    this.longUrl= value;
+    this.longUrlEvent.emit(value);
+    console.log(value);
   }
 }

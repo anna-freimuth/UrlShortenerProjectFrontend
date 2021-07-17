@@ -1,2 +1,3 @@
-<app-input-url-form></app-input-url-form>
-<app-output-url-redirect></app-output-url-redirect>
+<app-input-url-form (longUrlEvent)="setLongUrl($event)"></app-input-url-form>
+<app-output-url-redirect *ngIf="longUrl" [longUrl]="longUrl"></app-output-url-redirect>
+

@@ -1,4 +1,4 @@
-<div class="container mt-4" *ngIf="top">
+<div class="container mt-4" *ngIf="statistics">
   <h3>Statistics</h3>
   <div>
     <button class="btn btn-outline-dark mb-2" type="button" routerLink="/home">Home</button>
@@ -12,8 +12,8 @@
     </tr>
     </thead>
     <tbody>
-    <ng-container *ngFor="let elt of top">
-      <tr app-statistic-item [elt]="elt"></tr>
+    <ng-container *ngFor="let elt of statistics">
+      <tr app-statistic-item [statistic]="elt"></tr>
     </ng-container>
     </tbody>
   </table>

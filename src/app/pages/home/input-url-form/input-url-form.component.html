@@ -4,13 +4,13 @@
       <div class="mb-3">
         <label for="long-link" class="form-label">Long link</label>
         <input type="text" class="form-control" id="long-link" placeholder="https://..." aria-describedby="longLinkHelp"
-               formControlName="longLink"
-        [ngClass]="!form.controls.longLink.errors && form.controls.longLink.value  ?'is-valid':'is-invalid'">
+               formControlName="longUrl"
+        [ngClass]="!form.controls.longUrl.errors && form.controls.longUrl.value  ?'is-valid':'is-invalid'">
         <div id="longLinkHelp" class="form-text">Please write here a long link.</div>
       </div>
-      <div class="mt-2 mb-2" *ngIf="form.controls.longLink.errors&&(form.dirty || form.touched)">
-        <p *ngIf="form.controls.longLink.hasError('pattern')" class=" alert alert-warning"> Link is not valid</p>
-        <p *ngIf="form.controls.longLink.hasError('required')" class=" alert alert-warning">Link is required</p>
+      <div class="mt-2 mb-2" *ngIf="form.controls.longUrl.errors&&(form.dirty || form.touched)">
+        <p *ngIf="form.controls.longUrl.hasError('pattern')" class=" alert alert-warning"> Link is not valid</p>
+        <p *ngIf="form.controls.longUrl.hasError('required')" class=" alert alert-warning">Link is required</p>
       </div>
       <div class="mb-3">
         <label for="expiration-date" class="form-label">Expiration date</label>

@@ -1,10 +1,10 @@
 export class Model {
-  private longLink: string;
+  private longUrl: string;
   private date: string;
 
 
   constructor(longLink: string, date: string) {
-    this.longLink = longLink;
+    this.longUrl = longLink;
     this.date = date;
   }
 

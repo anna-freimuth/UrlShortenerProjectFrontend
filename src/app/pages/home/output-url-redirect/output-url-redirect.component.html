@@ -1,14 +1,12 @@
-<div class="container mt-4 col-sm-6" *ngIf="false" >
+<div class="container mt-4 col-sm-6" >
   <div class="buttons-home">
     <div class="card offset-3" style="width: 18rem;">
       <div class="card-body">
-        <h5 class="card-title">Your short link is:</h5>
-        <p class="card-text">short url</p>
-        <button type="button" class="btn btn-secondary" >redirect</button>
-        <button type="button" class="btn btn-secondary offset-4">statistics</button>
+        <h5 class="card-title" >Your short link is: </h5>
+        <p class="card-text" *ngIf="longUrl">{{longUrl.shortUrl}}</p>
+        <button   *ngIf="longUrl" class="btn bg-secondary" type="button" (click)="navigateByUrl(longUrl.shortUrl)">redirect</button>
+        <button type="button" class="btn btn-secondary offset-4"  routerLink="/statistic" >statistics</button>
       </div>
     </div>
   </div>
 </div>
-
-

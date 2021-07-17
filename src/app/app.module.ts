@@ -10,6 +10,7 @@ import {InputUrlFormComponent} from './pages/home/input-url-form/input-url-form.
 import {OutputUrlRedirectComponent} from './pages/home/output-url-redirect/output-url-redirect.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { StatisticItemComponent } from './pages/statistics/statistic-item/statistic-item.component';
+import {HttpClientModule} from "@angular/common/http";
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { StatisticItemComponent } from './pages/statistics/statistic-item/statis
     RouterModule,
     AppRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -9,5 +9,9 @@ export const dateValidator: ValidatorFn = (control: AbstractControl) => {
   const str: string[] = valueStr.split('-');
   const date = new Date(+str[0], +str[1] - 1, +str[2]);
   const now = new Date();
+  now.setHours(0)
+  now.setMinutes(0)
+  now.setSeconds(0)
+  now.setMilliseconds(0)
   return date >= now ? null : {isBeforeToday: true};
 }
