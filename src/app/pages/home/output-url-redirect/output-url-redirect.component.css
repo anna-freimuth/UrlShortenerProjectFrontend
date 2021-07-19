@@ -5,3 +5,12 @@
 .card{
   text-align: center;
 }
+
+#button{
+  color: white;
+}
+
+.card.offset-3{
+  background-color:rgb(232, 240, 254) !important;
+  border-color:#198754 ;
+}

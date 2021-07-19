@@ -1,4 +1,4 @@
-import {Component, Input, OnInit, Output, EventEmitter} from '@angular/core';
+import {Component, EventEmitter, OnDestroy, OnInit, Output} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 import {DatePipe} from "@angular/common";
 import {dateValidator} from "./dateValidator";
@@ -6,8 +6,7 @@ import {Model} from "../../../model/model";
 import {UrlService} from "../../../service/url.service";
 import {ShortUrl} from "../../../model/short-url";
 import {HttpErrorResponse} from "@angular/common/http";
-import {valueReferenceToExpression} from "@angular/compiler-cli/src/ngtsc/annotations/src/util";
-import {OutputUrlRedirectComponent} from "../output-url-redirect/output-url-redirect.component";
+import {Subscription} from "rxjs";
 
 @Component({
   selector: 'app-input-url-form',
@@ -15,16 +14,21 @@ import {OutputUrlRedirectComponent} from "../output-url-redirect/output-url-redi
   styleUrls: ['./input-url-form.component.css'],
   providers: [DatePipe]
 })
-export class InputUrlFormComponent implements OnInit {
+export class InputUrlFormComponent implements OnInit, OnDestroy {
 
+  private subscriptions: Subscription[] = [];
   form: FormGroup | undefined;
-  longUrl: ShortUrl| undefined;
+  longUrl: ShortUrl | undefined;
   @Output()
   longUrlEvent = new EventEmitter<ShortUrl>()
 
   pattern = 'https?:\\/\\/(www\\.)?[-a-zA-Z0-9@:%._\\+~#=]{1,256}\\.[a-zA-Z0-9()]{1,6}\\b([-a-zA-Z0-9()!@:%_\\+.~#?&\\/\\/=]*)'
 
-  constructor(private fb: FormBuilder, private datePipe: DatePipe, private urlService:UrlService) {
+  constructor(private fb: FormBuilder, private datePipe: DatePipe, private urlService: UrlService) {
+  }
+
+  ngOnDestroy(): void {
+    this.subscriptions?.forEach(value => value.unsubscribe());
   }
 
   ngOnInit(): void {
@@ -48,8 +52,11 @@ export class InputUrlFormComponent implements OnInit {
 
   onSubmit() {
     const model: Model = this.form?.value;
-    this.urlService.addUrl(model)
-      .subscribe(value=>this.callBackOk(value),error=>this.callBackError(error));
+
+    const addSubscription = this.urlService.addUrl(model)
+      .subscribe(value => this.callBackOk(value), error => this.callBackError(error));
+
+    this.subscriptions.push(addSubscription);
   }
 
   private callBackError(error: HttpErrorResponse) {
@@ -57,7 +64,7 @@ export class InputUrlFormComponent implements OnInit {
   }
 
   private callBackOk(value: ShortUrl) {
-    this.longUrl= value;
+    this.longUrl = value;
     this.longUrlEvent.emit(value);
     console.log(value);
   }
