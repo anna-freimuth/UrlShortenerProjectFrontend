@@ -5,7 +5,8 @@
         <label for="long-link" class="form-label">Long link</label>
         <input type="text" class="form-control" id="long-link" placeholder="https://..." aria-describedby="longLinkHelp"
                formControlName="longUrl"
-        [ngClass]="!form.controls.longUrl.errors && form.controls.longUrl.value  ?'is-valid':'is-invalid'">
+               [class.is-invalid]="form.controls.longUrl.invalid && (form.controls.longUrl.dirty || form.controls.longUrl.touched)"
+               [class.is-valid]="form.controls.longUrl.valid && (form.controls.longUrl.dirty || form.controls.longUrl.touched) ">
         <div id="longLinkHelp" class="form-text">Please write here a long link.</div>
       </div>
       <div class="mt-2 mb-2" *ngIf="form.controls.longUrl.errors&&(form.dirty || form.touched)">

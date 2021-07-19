@@ -4,8 +4,8 @@
       <div class="card-body">
         <h5 class="card-title" >Your short link is: </h5>
         <p class="card-text" *ngIf="longUrl">{{longUrl.shortUrl}}</p>
-        <button   *ngIf="longUrl" class="btn bg-secondary" type="button" (click)="navigateByUrl(longUrl.shortUrl)">redirect</button>
-        <button type="button" class="btn btn-secondary offset-4"  routerLink="/statistic" >statistics</button>
+        <button id="button"  *ngIf="longUrl" class="btn bg-secondary" type="button" (click)="navigateByUrl(longUrl.shortUrl)">redirect</button>
+        <button id="button2" type="button" class="btn btn-secondary offset-4"  routerLink="/statistic" >statistics</button>
       </div>
     </div>
   </div>
