@@ -9,9 +9,7 @@ import {ShortUrl} from "../../../model/short-url";
 export class OutputUrlRedirectComponent implements OnInit {
 
   @Input()
-  longUrl: ShortUrl | undefined;
-
-  constructor() { }
+  shortUrl: ShortUrl | undefined;
 
   ngOnInit(): void {
   }
@@ -19,4 +17,5 @@ export class OutputUrlRedirectComponent implements OnInit {
   navigateByUrl(shortUrl: string) {
     window.location.href = shortUrl;
   }
+
 }

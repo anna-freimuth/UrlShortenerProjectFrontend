@@ -1,0 +1,16 @@
+.nav-copy{
+  text-align: right;
+}
+.pointer {
+  cursor: pointer;
+}
+.table-dark {
+  --bs-table-bg: #1a223d;
+  --bs-table-striped-bg: #1f3042;
+  --bs-table-hover-bg: #121b32;
+}
+h3{
+  text-align: center;
+  color: #121b32;
+}
+

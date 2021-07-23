@@ -11,6 +11,10 @@ import {OutputUrlRedirectComponent} from './pages/home/output-url-redirect/outpu
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import { StatisticItemComponent } from './pages/statistics/statistic-item/statistic-item.component';
 import {HttpClientModule} from "@angular/common/http";
+import { NavbarComponent } from './pages/navbar/navbar.component';
+import { LoaderComponent } from './pages/loader/loader.component';
+import { SortPipePipe } from './pages/statistics/sort-pipe.pipe';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,7 +23,10 @@ import {HttpClientModule} from "@angular/common/http";
     StatisticsComponent,
     InputUrlFormComponent,
     OutputUrlRedirectComponent,
-    StatisticItemComponent
+    StatisticItemComponent,
+    NavbarComponent,
+    LoaderComponent,
+    SortPipePipe
 
   ],
   imports: [
@@ -29,6 +36,7 @@ import {HttpClientModule} from "@angular/common/http";
     FormsModule,
     ReactiveFormsModule,
     HttpClientModule,
+    NgbModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
