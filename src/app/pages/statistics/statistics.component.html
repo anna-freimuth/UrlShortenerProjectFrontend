@@ -1,20 +1,22 @@
 <div class="container mt-4" *ngIf="statistics">
   <h3>Statistics</h3>
-  <div>
-    <button class="btn btn-outline-dark mb-2" type="button" routerLink="/home">Home</button>
-  </div>
   <table class="table table-dark table-hover">
     <thead>
     <tr>
-      <th>long link</th>
-      <th>short link</th>
-      <th>amount of calls</th>
+      <th class="pointer" (click)="sort('longUrl')">long link</th>
+      <th class="pointer" (click)="sort('shortUrl')">short link</th>
+      <th class="pointer" (click)="sort('amount')">amount of calls</th>
+      <th class="nav-copy">navigate  or copy short link</th>
     </tr>
     </thead>
     <tbody>
-    <ng-container *ngFor="let elt of statistics">
+    <ng-container *ngFor="let elt of statistics | sortPipe : sortBy : reverseSort">
       <tr app-statistic-item [statistic]="elt"></tr>
     </ng-container>
     </tbody>
   </table>
 </div>
+<ng-template [ngIf]="!statistics">
+  <app-loader></app-loader>
+</ng-template>
+

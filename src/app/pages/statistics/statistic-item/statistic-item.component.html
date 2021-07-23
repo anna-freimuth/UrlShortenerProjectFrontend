@@ -2,5 +2,9 @@
 <td>{{backend + "/" + statistic.shortUrl}}</td>
 <td>{{statistic.amount}}</td>
 
-
+<div class="btn-group d-flex d-grid">
+    <button class="btn btn-outline-primary" (click)="goToLink()">Navigate</button>
+    <button class="btn btn-outline-primary"
+            (click)="copy()">{{isCopy ? 'Link coped' : 'Copy link'}}</button>
+  </div>
 
