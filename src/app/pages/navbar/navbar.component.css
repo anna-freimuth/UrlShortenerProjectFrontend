@@ -2,8 +2,6 @@
   position: fixed;
   text-align: left;
   background-color: #1a223d;
-  padding: 0;
-
 }
 .nav-link.active{
 background-color: #121b32;

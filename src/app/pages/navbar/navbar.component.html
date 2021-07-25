@@ -1,5 +1,4 @@
 <div class="navbar">
-  <div class="d-flex">
     <ul ngbNav #nav="ngbNav" [(activeId)]="active" class="nav-pills " orientation="vertical">
       <li ngbNavItem="top">
         <a ngbNavLink routerLink="../">URL shortener</a>
@@ -10,4 +9,4 @@
     </ul>
     <div [ngbNavOutlet]="nav" class="ml-4"></div>
   </div>
-</div>
+

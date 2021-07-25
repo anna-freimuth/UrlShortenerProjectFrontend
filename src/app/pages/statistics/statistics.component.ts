@@ -39,7 +39,6 @@ export class StatisticsComponent implements OnInit, OnDestroy {
 
   private errorHandle(error: HttpErrorResponse): void {
     console.log(error);
-    alert(error)
   }
 
   sort(sortBy: 'id' | 'shortUrl' | 'longUrl' | 'amount') {
