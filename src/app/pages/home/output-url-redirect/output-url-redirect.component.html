@@ -4,8 +4,15 @@
       <div class="card-body">
         <h5 class="card-title" >Your short link is: </h5>
         <p class="card-text" *ngIf="shortUrl">{{shortUrl.shortUrl}}</p>
-        <button id="button"  *ngIf="shortUrl" class="btn btn-secondary" type="button" (click)="navigateByUrl(shortUrl.shortUrl)">redirect</button>
-      </div>
+        <div class="btn-group">
+<button id="button"  *ngIf="shortUrl" class="btn btn-secondary" type="button" (click)="navigateByUrl(shortUrl.shortUrl)">Redirect</button>
+          <div class="btn-group d-flex d-grid">
+            <button class="btn btn-outline-primary" (click)="goToLink()">Open link in a new tab</button>
+            <button class="btn btn-outline-primary"
+                    (click)="copy()">{{isCopy ? 'Link coped' : 'Copy link'}}</button>
+          </div>
+        </div>
     </div>
   </div>
+</div>
 </div>
